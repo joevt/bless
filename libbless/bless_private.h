@@ -31,6 +31,9 @@
  *  $Id: bless_private.h,v 1.22 2006/05/31 22:30:26 ssen Exp $
  *
  */
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #ifndef _BLESS_PRIVATE_H_
 #define _BLESS_PRIVATE_H_
@@ -75,10 +78,10 @@
 #endif
 #define USE_COREGRAPHICS		1
 #define USE_HISERVICES		1
-#define USE_MEDIAKIT			1
-#define SUPPORT_RAID			1
-#define	SUPPORT_APPLE_PARTITION_MAP	1
-#define SUPPORT_CSM_LEGACY_BOOT 1
+#define USE_MEDIAKIT			0 // joevt
+#define SUPPORT_RAID			0 // joevt
+#define	SUPPORT_APPLE_PARTITION_MAP	0 // joevt
+#define SUPPORT_CSM_LEGACY_BOOT 0 // joevt
 
 #endif
 

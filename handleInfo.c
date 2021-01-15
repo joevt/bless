@@ -31,6 +31,9 @@
  *
  *
  */
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -58,7 +61,11 @@
 #include <IOKit/storage/IOMedia.h>
 #include <IOKit/IOBSD.h>
 #include <CoreFoundation/CoreFoundation.h>
+#if 0  // joevt
 #include <APFS/APFS.h>
+#else
+#include "APFS.h"
+#endif
 
 
 #define kPrebootIndicator	"{Preboot}"
@@ -69,7 +76,9 @@ static int interpretEFIString(BLContextPtr context, CFStringRef efiString, char 
 static void addElements(const void *key, const void *value, void *context);
 
 static int findBootRootAggregate(BLContextPtr context, char *memberPartition, char *bootRootDevice, int deviceLen);
+#if 0 // joevt
 static int FixupPrebootMountPointInPaths(CFMutableDictionaryRef dict, const char *mountPoint);
+#endif
 static int
 GetSystemBSDForVolumeGroupUUID(BLContextPtr context, CFStringRef uuid, char *currentDev, int len);
 
@@ -122,6 +131,7 @@ int modeInfo(BLContextPtr context, struct clarg actargs[klast]) {
 	char					prebootNode[MNAMELEN];
 	bool					explicitPreboot = false;
     bool                    explicitRecovery = false;
+	bool					explicitVolume = false; // joevt
 	bool					noAccessToPreboot = false;
 	char					*volToCheck;
 	io_service_t			service = IO_OBJECT_NULL;
@@ -491,6 +501,7 @@ int modeInfo(BLContextPtr context, struct clarg actargs[klast]) {
 	if (isAPFS) {
         // Are we being asked specifically about the recovery volume?
         APFSVolumeRole(sb.f_mntfromname + 5, &role, NULL);
+#if 0 // joevt
         if (role == APFS_VOL_ROLE_RECOVERY) {
             ret = BLCreateAPFSVolumeInformationDictionary(context, actargs[kmount].argument, (void *)&allInfo);
             if (ret) {
@@ -569,6 +580,22 @@ int modeInfo(BLContextPtr context, struct clarg actargs[klast]) {
                 return 5;
             }
 		}
+#else
+		ret = BLCreateAPFSVolumeInformationDictionary(context, actargs[kmount].argument, (void *)&allInfo);
+		if (ret) {
+			blesscontextprintf(context, kBLLogLevelError, "Couldn't get bless data from apfs volume.\n");
+			return 4;
+		}
+		switch (role) {
+			case APFS_VOL_ROLE_RECOVERY:
+				explicitRecovery = true; break;
+			case APFS_VOL_ROLE_PREBOOT:
+				explicitPreboot = true; break;
+			default:
+				explicitVolume = true; break;
+		}
+		volToCheck = actargs[kmount].argument;
+#endif
 	}
     
     CFDictionaryApplyFunction(dict, addElements, (void *)allInfo);    
@@ -687,7 +714,7 @@ int modeInfo(BLContextPtr context, struct clarg actargs[klast]) {
                             if (strcmp(mnts[i].f_mntfromname, bsd) == 0) break;
                         }
                         if (i < mntsize) {
-                            if (explicitPreboot || explicitRecovery) {
+                            if (explicitPreboot || explicitRecovery || explicitVolume) {
                                 blesscontextprintf(context, kBLLogLevelNormal, "These paths are associated with the volume \"%s\".\n",
                                                     mnts[i].f_mntonname);
                             } else {
@@ -706,7 +733,7 @@ int modeInfo(BLContextPtr context, struct clarg actargs[klast]) {
                                 blesscontextprintf(context, kBLLogLevelNormal, "No blessed APFS snapshot for this volume.\n");
                             }
                         } else {
-                            if (explicitPreboot || explicitRecovery) {
+                            if (explicitPreboot || explicitRecovery || explicitVolume) {
                                 blesscontextprintf(context, kBLLogLevelNormal, "These paths are associated with the device %s, "
                                                     "which is not mounted.\n", bsd);
                             } else {
@@ -939,6 +966,7 @@ static void addElements(const void *key, const void *value, void *context)
 }
 
 
+#if 0 // joevt
 static int FixupPrebootMountPointInPaths(CFMutableDictionaryRef dict, const char *mountPoint)
 {
 	char canonicalPath[MAXPATHLEN];
@@ -961,6 +989,7 @@ static int FixupPrebootMountPointInPaths(CFMutableDictionaryRef dict, const char
 	}
 	return 0;
 }
+#endif
 
 static int
 GetSystemBSDForVolumeGroupUUID(BLContextPtr context, CFStringRef uuid, char *currentDev, int len)

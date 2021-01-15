@@ -30,6 +30,9 @@
  *  $Id: handleFolder.c,v 1.79 2006/07/21 14:59:24 ssen Exp $
  *
  */
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #include <CoreFoundation/CoreFoundation.h>
 
@@ -44,7 +47,11 @@
 #include <IOKit/storage/IOMedia.h>
 
 
+#if 0  // joevt
 #include <APFS/APFS.h>
+#else
+#include "APFS.h"
+#endif
 
 #include "enums.h"
 #include "structs.h"
@@ -396,7 +403,7 @@ int modeFolder(BLContextPtr context, struct clarg actargs[klast]) {
 			}
 		}
 		
-		isLabel = isOFLabel((const char *)CFDataGetBytePtr(labeldata), CFDataGetLength(labeldata));
+		isLabel = isOFLabel((const char *)CFDataGetBytePtr(labeldata), (int)CFDataGetLength(labeldata));
 		blesscontextprintf(context, kBLLogLevelVerbose,  "Scale 1 label data is valid: %s\n",
 						   isLabel ? "YES" : "NO");
 		
@@ -644,7 +651,7 @@ int modeFolder(BLContextPtr context, struct clarg actargs[klast]) {
             char     *bootEFISource;
             
             if (shouldBless) {
-                if (role == APFS_VOL_ROLE_PREBOOT || role == APFS_VOL_ROLE_RECOVERY) {
+                if (role == APFS_VOL_ROLE_PREBOOT || role == APFS_VOL_ROLE_RECOVERY || role == APFS_VOL_ROLE_SYSTEM) { // joevt
 					if (actargs[kfile].present) useFullPath = true;
 					
                     ret = BLGetAPFSBlessData(context, actargs[kmount].argument, oldWords);

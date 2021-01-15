@@ -30,6 +30,9 @@
  *  $Id: BLGetCommonMountPoint.c,v 1.14 2006/02/20 22:49:56 ssen Exp $
  *
  */
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #include <stdio.h>
 #include <string.h>
@@ -102,6 +105,8 @@ int BLGetCommonMountPoint(BLContextPtr context, const char * f1,
       return 0;
     }
 
+#if 0 // joevt
     contextprintf(context, kBLLogLevelError,  "No folders specified" );
     return 4;
+#endif
 }

@@ -2,6 +2,9 @@
 //  manifests.c
 //
 //
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #include <string.h>
 #include <libgen.h>
@@ -9,10 +12,14 @@
 #include <paths.h>
 #include <sys/param.h>
 #include <sys/mount.h>
+#if 0  // joevt
 #include <APFS/APFSConstants.h>
+#endif
 #include <CoreFoundation/CoreFoundation.h>
 #import <Foundation/Foundation.h>
+#if 0  // joevt
 #import <OSPersonalization/OSPersonalization.h>
+#endif
 #include "bless.h"
 #include "bless_private.h"
 #include "protos.h"
@@ -20,6 +27,7 @@
 
 int CopyManifests(BLContextPtr context, const char *destPath, const char *srcPath, const char *srcSystemPath)
 {
+#if 0 // joevt
     int							ret = 0;
     OSPersonalizationController	*pc;
     NSArray<NSString *>			*manifestNames;
@@ -187,6 +195,9 @@ int CopyManifests(BLContextPtr context, const char *destPath, const char *srcPat
 		BLUnmountContainerVolume(context, prebootMnt);
 	}
     return ret;
+#else
+	return -1;
+#endif // joevt
 }
 
 

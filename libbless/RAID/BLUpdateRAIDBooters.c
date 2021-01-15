@@ -30,6 +30,9 @@
  *  $Id: BLUpdateRAIDBooters.c,v 1.12 2006/02/20 22:49:58 ssen Exp $
  *
  */
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #include <stdlib.h>
 #include <unistd.h>
@@ -49,7 +52,11 @@
 
 #if SUPPORT_RAID
 
+#if 0  // joevt
 #include <IOKit/storage/RAID/AppleRAIDUserLib.h>
+#else
+#include "AppleRAIDUserLib.h"
+#endif
 
 #if USE_DISKARBITRATION
 #include <DiskArbitration/DiskArbitration.h>

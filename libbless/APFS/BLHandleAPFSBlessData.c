@@ -28,15 +28,28 @@
  *  Copyright (c) 2001-2016 Apple Inc. All Rights Reserved.
  *
  */
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 #include <stdint.h>
 #include <unistd.h>
 #include <errno.h>
 #include <paths.h>
+#if 0  // joevt
 #include <apfs/apfs_fsctl.h>
 #include <System/sys/snapshot.h>
+#else
+#include "apfs_fsctl.h"
+#include <sys/snapshot.h>
+#include "snapshot.h"
+#endif
 #include <IOKit/storage/IOMedia.h>
 #include <IOKit/IOBSD.h>
+#if 0  // joevt
 #include <APFS/APFS.h>
+#else
+#include "APFS.h"
+#endif
 
 #include "bless.h"
 #include "bless_private.h"
@@ -128,6 +141,7 @@ int BLGetAPFSSnapshotBlessData(BLContextPtr context, const char *mountpoint, uui
     if (!snap_uuid) {
         return -1;
     }
+#if 0 // joevt
 
     apfs_snap_name_lookup_t snap_lookup_data = {0};
     snap_lookup_data.type = SNAP_LOOKUP_ROOT;
@@ -143,6 +157,9 @@ int BLGetAPFSSnapshotBlessData(BLContextPtr context, const char *mountpoint, uui
     }
 
     return 0;
+#else
+	return -1;
+#endif
 }
 
 
@@ -247,6 +264,7 @@ exit:
 
 int BLSetAPFSSnapshotBlessData(BLContextPtr context, const char *mountpoint, uuid_string_t snap_uuid)
 {
+#if 0 // joevt
     apfs_snap_name_lookup_t snap_lookup_data = {0};
     int vol_fd, err = 0;
 
@@ -276,6 +294,9 @@ int BLSetAPFSSnapshotBlessData(BLContextPtr context, const char *mountpoint, uui
 
     close(vol_fd);
     return err;
+#else
+	return -1;
+#endif
 }
 
 CFStringRef BLGetAPFSBlessedVolumeBSDName(BLContextPtr context, const char *mountpoint, char *bless_folder, uuid_string_t vol_uuid)

@@ -1,6 +1,9 @@
 //
 //  personalize.m
 //
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #import <string.h>
 #import <stdlib.h>
@@ -12,9 +15,13 @@
 #import <sys/stat.h>
 #import <CoreFoundation/CoreFoundation.h>
 #import <Foundation/Foundation.h>
+#if 0 // joevt
 #import <OSPersonalization/OSPersonalization.h>
 #import <APFS/APFS.h>
 #import <Bom/Bom.h>
+#else
+#import "APFS.h"
+#endif
 #import <IOKit/storage/IOMedia.h>
 #import "bless.h"
 #import "bless_private.h"
@@ -26,12 +33,15 @@
 #define EX_OTHERPERSONALIZE	131
 
 
+#if 0 // joevt
 static int HandleSpecialVolume(BLContextPtr context, const char *rootPath, const char *volumeDev, int role, bool useGroupUUID);
 static int CopyRootToDir(const char *rootPath, const char *volumePath);
+#endif
 
 
 int PersonalizeOSVolume(BLContextPtr context, const char *volumePath, const char *prFile, bool suppressACPrompt)
 {
+#if 0 // joevt
 	__block int                 ret = 0;
 	NSAutoreleasePool			*pool = [[NSAutoreleasePool alloc] init];
 	OSPersonalizationController *pc;
@@ -174,10 +184,14 @@ exit:
 	dispatch_release(wait);
 	[pool release];
 	return ret;
+#else
+	return -1;
+#endif
 }
 
 
 
+#if 0 // joevt
 static int HandleSpecialVolume(BLContextPtr context, const char *rootPath, const char *volumeDev, int role, bool useGroupUUID)
 {
 	int				ret;
@@ -211,5 +225,6 @@ static int CopyRootToDir(const char *rootPath, const char *volumePath)
 	BOMCopierFree(copier);
 	return ret;
 }
+#endif
 
 

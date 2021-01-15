@@ -1,6 +1,9 @@
 //
 //  blessUtilities.c
 //
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #include <stdlib.h>
 #include <string.h>
@@ -17,17 +20,26 @@
 #include <sys/mount.h>
 #include <IOKit/IOKitLib.h>
 #include <IOKit/storage/IOMedia.h>
+#if 0  // joevt
 #include <APFS/APFS.h>
+#else
+#include "APFS.h"
+#endif
 #include "bless.h"
 #include "bless_private.h"
 #include "protos.h"
 #include <IOKit/IOBSD.h>
+#if 0 // joevt
 #include <Img4Decode.h>
 #include <Img4Encode.h>
 #include <apfs/apfs_fsctl.h>
 #include <apfs/apfs_mount.h>
 #include <System/sys/snapshot.h>
 #include <arvhelper.h>
+#else
+#include <sys/snapshot.h>
+#include "snapshot.h"
+#endif
 
 enum {
 	kIsInvisible                  = 0x4000, /* Files and folders */
@@ -501,6 +513,7 @@ exit:
 
 int GetSnapshotNameFromRootHash(BLContextPtr context, const char *rootHashPath, char *snapName, int nameLen)
 {
+#if 0 // joevt
     struct stat             existingStat;
     CFDataRef               rootHashData = NULL;
     char *                  rootHashString = NULL;
@@ -533,12 +546,16 @@ exit:
     if (rootHashData) CFRelease(rootHashData);
     if (error) CFRelease(error);
     return ret;
+#else
+	return 1;
+#endif
 }
 
 
 
 int GetMountForSnapshot(BLContextPtr context, const char *snapshotName, const char *bsd, char *mountPoint, int mountPointLen)
 {
+#if 0 // joevt
 	struct statfs	*mnts;
 	int             mntsize;
 	int             i;
@@ -613,6 +630,9 @@ int GetMountForSnapshot(BLContextPtr context, const char *snapshotName, const ch
 exit:
     if (rootmedia) IOObjectRelease(rootmedia);
 	return ret;
+#else
+	return 1;
+#endif
 }
 
 
@@ -676,7 +696,7 @@ static int DeleteHierarchy(char *path, int pathMax)
 	DIR				*dp = NULL;
 	struct dirent	*dirent;
 	struct stat		sb;
-	int				endIdx;
+	unsigned long	endIdx;
 	
 	dp = opendir(path);
 	if (!dp) {
@@ -831,7 +851,7 @@ static int GetFilesInDirWithPrefix(const char *directory, const char *prefix, ch
 	struct stat		sb;
 	char			path[MAXPATHLEN];
 	int				endIdx;
-	int				prefixLen = strlen(prefix);
+	int				prefixLen = (int)strlen(prefix);
 	char			**list = NULL;
 	int				numFiles = 0;
 	int				listSize = 10;
@@ -849,7 +869,7 @@ static int GetFilesInDirWithPrefix(const char *directory, const char *prefix, ch
 	readdir(dp); readdir(dp);
 	strlcpy(path, directory, sizeof path);
 	if (path[strlen(path)-1] != '/') strlcat(path, "/", sizeof path);
-	endIdx = strlen(path);
+	endIdx = (int)strlen(path);
 	while ((dirent = readdir(dp)) != NULL) {
 		if (strncmp(dirent->d_name, prefix, prefixLen) != 0) continue;
 		if (endIdx + dirent->d_namlen >= sizeof path) continue;
@@ -957,8 +977,8 @@ static int CopyKCFile(BLContextPtr context, const char *from, const char *to)
 	}
 	lseek(fdFrom, 0, SEEK_SET);
 	while (fileSize > 0) {
-		bytes = MIN(fileSize, 0x100000);
-		if ((bytes = read(fdFrom, buffer, bytes)) < 0) {
+		bytes = (int)MIN(fileSize, 0x100000);
+		if ((bytes = (int)read(fdFrom, buffer, bytes)) < 0) {
 			ret = errno;
 			blesscontextprintf(context, kBLLogLevelError, "Error reading from %s: %s\n", from, strerror(ret));
 			goto exit;
@@ -986,8 +1006,8 @@ static bool StringHasSuffix(const char *str, const char *suffix)
 	int strLength;
 	int suffixLength;
 
-	strLength = strlen(str);
-	suffixLength = strlen(suffix);
+	strLength = (int)strlen(str);
+	suffixLength = (int)strlen(suffix);
 	if (strLength < suffixLength) return false;
 	cmp = str + strLength - suffixLength;
 	return strcmp(cmp, suffix) == 0;

@@ -27,12 +27,19 @@
  *  Copyright (c) 2020 Apple Inc. All Rights Reserved.
  *
  */
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #include <sys/mount.h>
 #include <sys/param.h>
 #include <sys/stat.h>
 #include <string.h>
+#if 0  // joevt
 #include <APFS/APFS.h>
+#else
+#include "APFS.h"
+#endif
 
 #include "bless.h"
 #include "bless_private.h"

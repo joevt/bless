@@ -24,6 +24,9 @@
 //
 //  BLAPFSUtilities.c
 //
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #include <sys/param.h>
 #include <sys/mount.h>
@@ -34,8 +37,13 @@
 #include <IOKit/IOKitLib.h>
 #include <IOKit/IOBSD.h>
 #include <IOKit/storage/IOMedia.h>
+#if 0  // joevt
 #include <APFS/APFS.h>
 #include <apfs/apfs_fsctl.h>
+#else
+#include "APFS.h"
+#include "apfs_fsctl.h"
+#endif
 #include "bless.h"
 #include "bless_private.h"
 #include "protos.h"
@@ -496,7 +504,7 @@ int BLEnsureSpecialAPFSVolumeUUIDPath(BLContextPtr context, const char *volumeDe
         ret = EINVAL;
         goto exit;
     }
-    len = strlen(subjectPath);
+    len = (int)strlen(subjectPath);
     if (subjectLen <= len + 1) {
         ret = EINVAL;
         goto exit;
@@ -817,7 +825,7 @@ static uint16_t RoleNameToValue(CFStringRef roleName)
 	} else if (CFEqual(roleName, CFSTR(kAPFSVolumeRoleIDiags))) {
 		return APFS_VOL_ROLE_IDIAGS;
 	}
-	return -1U;
+	return (uint16_t)-1U;
 }
 
 int GetPrebootBSDForVolumeBSD(BLContextPtr context, const char *volBSD, char *prebootBSD, int prebootBSDLen)

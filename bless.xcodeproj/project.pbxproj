@@ -67,8 +67,6 @@
 		0C477C9715000D7200C0DFA2 /* BLSetEFIBootDevice.c in Sources */ = {isa = PBXBuildFile; fileRef = 0CAD6839135CD78E00C9B626 /* BLSetEFIBootDevice.c */; };
 		0CAD683A135CD78E00C9B626 /* BLSetEFIBootDevice.c in Sources */ = {isa = PBXBuildFile; fileRef = 0CAD6839135CD78E00C9B626 /* BLSetEFIBootDevice.c */; };
 		723BF18223A177EC00AC84EF /* libbootpolicy.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 723BF18123A177EC00AC84EF /* libbootpolicy.tbd */; };
-		72D184CC24B4FBDC008F9ADA /* libImg4Decode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D184C724B4DBC9008F9ADA /* libImg4Decode.a */; };
-		72D184CE24B5036B008F9ADA /* libDER.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D184CD24B5036B008F9ADA /* libDER.a */; };
 		953E41C624EF943800FB44FB /* bless2cli.c in Sources */ = {isa = PBXBuildFile; fileRef = 95BB315224EF8EB300920A16 /* bless2cli.c */; };
 		953E41CA24EF946000FB44FB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 953E41C924EF946000FB44FB /* Foundation.framework */; };
 		953E41CC24EF946800FB44FB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 953E41CB24EF946800FB44FB /* CFNetwork.framework */; };
@@ -87,7 +85,6 @@
 		9542712324F9AFED007BC896 /* libauthinstall.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9542712224F9AFED007BC896 /* libauthinstall.tbd */; };
 		9542712424F9B074007BC896 /* libImg4Encode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4CB691422E7DD5700BB045E /* libImg4Encode.a */; };
 		9542712524F9B08E007BC896 /* libImg4Decode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D184C724B4DBC9008F9ADA /* libImg4Decode.a */; };
-		95B78C8224B8AA7B000ADA84 /* libpartition.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B78C8124B8AA7A000ADA84 /* libpartition.a */; };
 		95E8D85A24F9B4130015B1B9 /* libamsupport.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E8D85924F9B4130015B1B9 /* libamsupport.tbd */; };
 		A03E04FA251C195300E63711 /* bless2.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = A03E04F8251C181800E63711 /* bless2.plist */; };
 		A03E04FB251C196900E63711 /* test_bless2 in CopyFiles */ = {isa = PBXBuildFile; fileRef = A03E04F9251C183600E63711 /* test_bless2 */; };
@@ -420,6 +417,12 @@
 
 /* Begin PBXFileReference section */
 		0CAD6839135CD78E00C9B626 /* BLSetEFIBootDevice.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = BLSetEFIBootDevice.c; sourceTree = "<group>"; };
+		63FC46BC25A48482006CB192 /* AppleRAIDUserLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppleRAIDUserLib.h; path = internal/AppleRAIDUserLib.h; sourceTree = SOURCE_ROOT; };
+		63FC46BD25A48482006CB192 /* fsgetpath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fsgetpath.h; path = internal/fsgetpath.h; sourceTree = SOURCE_ROOT; };
+		63FC46BE25A48482006CB192 /* MKMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKMedia.h; path = internal/MKMedia.h; sourceTree = SOURCE_ROOT; };
+		63FC46BF25A48482006CB192 /* APFS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APFS.h; path = internal/APFS.h; sourceTree = SOURCE_ROOT; };
+		63FC46E325A487A5006CB192 /* apfs_fsctl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = apfs_fsctl.h; path = internal/apfs_fsctl.h; sourceTree = SOURCE_ROOT; };
+		63FC46F525A48858006CB192 /* snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = snapshot.h; path = internal/snapshot.h; sourceTree = SOURCE_ROOT; };
 		723BF18123A177EC00AC84EF /* libbootpolicy.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbootpolicy.tbd; path = usr/lib/libbootpolicy.tbd; sourceTree = SDKROOT; };
 		72D184C724B4DBC9008F9ADA /* libImg4Decode.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libImg4Decode.a; path = usr/local/lib/libImg4Decode.a; sourceTree = SDKROOT; };
 		72D184CA24B4FB9C008F9ADA /* libImg4Decode_os.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libImg4Decode_os.a; path = usr/local/lib/libImg4Decode_os.a; sourceTree = SDKROOT; };
@@ -625,9 +628,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95B78C8224B8AA7B000ADA84 /* libpartition.a in Frameworks */,
-				72D184CE24B5036B008F9ADA /* libDER.a in Frameworks */,
-				72D184CC24B4FBDC008F9ADA /* libImg4Decode.a in Frameworks */,
 				FC4A58421F86D9CB00F15E95 /* Bom.framework in Frameworks */,
 				FC4376001DFD3E4C0018A727 /* APFS.framework in Frameworks */,
 				C617597D057E749600252FAB /* CoreFoundation.framework in Frameworks */,
@@ -703,6 +703,7 @@
 		08FB7795FE84155DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				63FC46BB25A4845E006CB192 /* internal */,
 				F61E91C901A4B30C01F50364 /* bless.c */,
 				F61E91F601A4B30C01F50364 /* usage.c */,
 				F5641E170227242C01F502C1 /* output.c */,
@@ -744,6 +745,19 @@
 				953E41BE24EF91C000FB44FB /* bless2cli */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		63FC46BB25A4845E006CB192 /* internal */ = {
+			isa = PBXGroup;
+			children = (
+				63FC46BF25A48482006CB192 /* APFS.h */,
+				63FC46BC25A48482006CB192 /* AppleRAIDUserLib.h */,
+				63FC46BD25A48482006CB192 /* fsgetpath.h */,
+				63FC46BE25A48482006CB192 /* MKMedia.h */,
+				63FC46E325A487A5006CB192 /* apfs_fsctl.h */,
+				63FC46F525A48858006CB192 /* snapshot.h */,
+			);
+			path = internal;
 			sourceTree = "<group>";
 		};
 		953E41BF24EF91C000FB44FB /* bootutil */ = {
@@ -1235,27 +1249,32 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					953E41BD24EF91C000FB44FB = {
 						CreatedOnToolsVersion = 12.0;
 						ProvisioningStyle = Automatic;
 					};
+					C617596D057E749600252FAB = {
+						DevelopmentTeam = 8T2PYLF8VG;
+					};
 					FC8588A61EEF247C009EDD68 = {
 						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
 					};
 					FC8588AB1EEF248D009EDD68 = {
 						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = BA7EB3FA086BD01A000A41C1 /* Build configuration list for PBXProject "bless" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
-				English,
 				en,
+				Base,
 			);
 			mainGroup = 08FB7794FE84155DC02AAC07 /* bless */;
 			projectDirPath = "";
@@ -1816,6 +1835,7 @@
 		B44C907F22D6B30A005F44F4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
@@ -1841,6 +1861,7 @@
 		B44C908022D6B30A005F44F4 /* Embedded */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
@@ -1863,6 +1884,7 @@
 		B44C908122D6B30A005F44F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
@@ -1888,6 +1910,8 @@
 		BA3D815C086C4E9C00484376 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
 				DEAD_CODE_STRIPPING = YES;
 				GCC_DYNAMIC_NO_PIC = YES;
@@ -1901,6 +1925,8 @@
 		BA3D815D086C4E9C00484376 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
 				DEAD_CODE_STRIPPING = YES;
 				GCC_DYNAMIC_NO_PIC = YES;
@@ -1914,19 +1940,43 @@
 		BA4E13E50C19B1D60049A1EA /* Embedded */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES_ERROR;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "BLESS_EMBEDDED=1";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = libbless;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				RC_ProjectSourceVersion = 9999;
-				SDKROOT = macosx.internal;
+				SDKROOT = macosx;
 				WARNING_CFLAGS = (
 					"-Wall",
 					"-Wno-error=deprecated-declarations",
@@ -1937,6 +1987,7 @@
 		BA4E13E60C19B1D60049A1EA /* Embedded */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				PRODUCT_NAME = World;
 			};
 			name = Embedded;
@@ -1944,8 +1995,11 @@
 		BA4E13E70C19B1D60049A1EA /* Embedded */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 8T2PYLF8VG;
 				FRAMEWORK_SEARCH_PATHS = (
 					/System/Library/PrivateFrameworks,
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
@@ -1964,6 +2018,8 @@
 		BA4E13E80C19B1D60049A1EA /* Embedded */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
 				DEAD_CODE_STRIPPING = YES;
 				GCC_DYNAMIC_NO_PIC = YES;
@@ -1976,7 +2032,7 @@
 					NO_GETCSTRING,
 				);
 				INSTALL_PATH = /usr/local/bin;
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = minibless;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1985,6 +2041,7 @@
 		BA4E13E90C19B1D60049A1EA /* Embedded */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
@@ -2006,6 +2063,8 @@
 		BA4E13EA0C19B1D60049A1EA /* Embedded */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
 				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "$(value)";
@@ -2019,6 +2078,8 @@
 		BA4E13EC0C19B1D60049A1EA /* Embedded */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DEBUGGING_SYMBOLS = default;
@@ -2037,6 +2098,8 @@
 		BA4E13ED0C19B1D60049A1EA /* Embedded */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
 				DEAD_CODE_STRIPPING = YES;
 				GCC_DYNAMIC_NO_PIC = YES;
@@ -2050,6 +2113,7 @@
 		BA7EB3C7086BD01A000A41C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
@@ -2074,10 +2138,12 @@
 		BA7EB3D1086BD01A000A41C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = bless.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 8T2PYLF8VG;
 				FRAMEWORK_SEARCH_PATHS = (
 					/System/Library/PrivateFrameworks,
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
@@ -2104,6 +2170,8 @@
 		BA7EB3D6086BD01A000A41C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
 				DEAD_CODE_STRIPPING = YES;
 				GCC_DYNAMIC_NO_PIC = YES;
@@ -2116,7 +2184,7 @@
 					NO_GETCSTRING,
 				);
 				INSTALL_PATH = /usr/local/bin;
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = minibless;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -2125,6 +2193,8 @@
 		BA7EB3DB086BD01A000A41C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
 				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2140,6 +2210,7 @@
 		BA7EB3E0086BD01A000A41C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				PRODUCT_NAME = World;
 			};
 			name = Release;
@@ -2147,6 +2218,8 @@
 		BA7EB3E5086BD01A000A41C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DEBUGGING_SYMBOLS = default;
@@ -2165,18 +2238,42 @@
 		BA7EB3FE086BD01A000A41C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES_ERROR;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = libbless;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				RC_ProjectSourceVersion = 9999;
-				SDKROOT = macosx.internal;
+				SDKROOT = macosx;
 				WARNING_CFLAGS = (
 					"-Wall",
 					"-Wno-error=deprecated-declarations",
@@ -2187,6 +2284,7 @@
 		BA7EB483086BDDED000A41C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
@@ -2211,10 +2309,12 @@
 		BA7EB485086BDDED000A41C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = bless.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 8T2PYLF8VG;
 				FRAMEWORK_SEARCH_PATHS = (
 					/System/Library/PrivateFrameworks,
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
@@ -2242,6 +2342,8 @@
 		BA7EB486086BDDED000A41C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
 				DEAD_CODE_STRIPPING = YES;
 				GCC_DYNAMIC_NO_PIC = YES;
@@ -2254,7 +2356,7 @@
 					NO_GETCSTRING,
 				);
 				INSTALL_PATH = /usr/local/bin;
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = minibless;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -2263,6 +2365,8 @@
 		BA7EB487086BDDED000A41C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
 				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2278,6 +2382,7 @@
 		BA7EB488086BDDED000A41C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				PRODUCT_NAME = World;
 			};
 			name = Debug;
@@ -2285,6 +2390,8 @@
 		BA7EB489086BDDED000A41C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DEBUGGING_SYMBOLS = default;
@@ -2303,20 +2410,44 @@
 		BA7EB48A086BDDED000A41C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES_ERROR;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = libbless;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				RC_ProjectSourceVersion = 9999;
-				SDKROOT = macosx.internal;
+				SDKROOT = macosx;
 				WARNING_CFLAGS = (
 					"-Wall",
 					"-Wno-error=deprecated-declarations",
@@ -2327,6 +2458,7 @@
 		BA83D5AB0C19C23000752534 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				PRODUCT_NAME = bootblockdata;
 			};
 			name = Release;
@@ -2334,6 +2466,7 @@
 		BA83D5AC0C19C23000752534 /* Embedded */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				PRODUCT_NAME = bootblockdata;
 			};
 			name = Embedded;
@@ -2341,6 +2474,7 @@
 		BA83D5AD0C19C23000752534 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				PRODUCT_NAME = bootblockdata;
 			};
 			name = Debug;
@@ -2348,6 +2482,8 @@
 		C68F27350CC13BCF00E3CD6A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
 				DEAD_CODE_STRIPPING = YES;
 				GCC_DYNAMIC_NO_PIC = YES;
@@ -2364,6 +2500,8 @@
 		C68F27360CC13BCF00E3CD6A /* Embedded */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
 				DEAD_CODE_STRIPPING = YES;
 				GCC_DYNAMIC_NO_PIC = YES;
@@ -2377,6 +2515,8 @@
 		C68F27370CC13BCF00E3CD6A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CURRENT_PROJECT_VERSION = "$(RC_ProjectSourceVersion)";
 				DEAD_CODE_STRIPPING = YES;
 				GCC_DYNAMIC_NO_PIC = YES;
@@ -2393,6 +2533,7 @@
 		FC8588A71EEF247C009EDD68 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				INSTALLHDRS_SCRIPT_PHASE = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -2401,6 +2542,7 @@
 		FC8588A81EEF247C009EDD68 /* Embedded */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				INSTALLHDRS_SCRIPT_PHASE = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -2409,6 +2551,7 @@
 		FC8588A91EEF247C009EDD68 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				INSTALLHDRS_SCRIPT_PHASE = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -2417,6 +2560,7 @@
 		FC8588AD1EEF248D009EDD68 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -2424,6 +2568,7 @@
 		FC8588AE1EEF248D009EDD68 /* Embedded */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Embedded;
@@ -2431,6 +2576,7 @@
 		FC8588AF1EEF248D009EDD68 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;

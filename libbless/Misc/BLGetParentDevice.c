@@ -30,6 +30,9 @@
  *  $Id: BLGetParentDevice.c,v 1.19 2006/02/20 22:49:56 ssen Exp $
  *
  */
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -39,7 +42,11 @@
 #include <sys/mount.h>
 
 #import <mach/mach_error.h>
+#if 0 // joevt
 #import <APFS/APFS.h>
+#else
+#include "APFS.h"
+#endif
 #import <IOKit/IOKitLib.h>
 #import <IOKit/IOBSD.h>
 #import <IOKit/storage/IOMedia.h>

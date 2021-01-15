@@ -28,6 +28,9 @@
  *  Copyright 2005-2007 Apple Inc. All Rights Reserved.
  *
  */
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #include <stdlib.h>
 #include <unistd.h>
@@ -472,7 +475,7 @@ static int parseURL(BLContextPtr context,
     
 	if(useBackslash) {
 		int i, len;
-		for(i=0, len=strlen(path); i < len; i++) {
+		for(i=0, len=(int)strlen(path); i < len; i++) {
 			if(path[i] == '/') {
 				path[i] = '\\';
 			}

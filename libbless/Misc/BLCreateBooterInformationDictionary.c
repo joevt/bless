@@ -28,6 +28,9 @@
  *  Copyright 2006-2007 Apple Inc. All Rights Reserved.
  *
  */
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #include <stdlib.h>
 #include <unistd.h>
@@ -42,7 +45,11 @@
 
 #include <CoreFoundation/CoreFoundation.h>
 
+#if 0 // joevt
 #include <APFS/APFS.h>
+#else
+#include "APFS.h"
+#endif
 
 #include "bless.h"
 #include "bless_private.h"

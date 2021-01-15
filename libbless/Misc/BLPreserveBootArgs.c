@@ -28,6 +28,9 @@
  *  Copyright 2005-2007 Apple Inc. All Rights Reserved.
  *
  */
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #include <stdlib.h>
 #include <stdarg.h>
@@ -85,7 +88,7 @@ int BLPreserveBootArgsIfChanged(BLContextPtr context,
                 }
             } else {
                 // debug= style
-                int keylen = strlen(remove_boot_args[i]);
+                int keylen = (int)strlen(remove_boot_args[i]);
                 if(strlen(token) >= keylen+1
                    && strncmp(remove_boot_args[i], token, keylen) == 0
                    && token[keylen] == '=') {

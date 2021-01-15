@@ -28,6 +28,9 @@
  *  Copyright (c) 2002-2007 Apple Inc. All Rights Reserved.
  *
  */
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #include <CoreFoundation/CoreFoundation.h>
 
@@ -36,6 +39,7 @@
 #include "bless.h"
 #include "bless_private.h"
 
+#if 0 // joevt
 static const char clut[] =
   {
     0x00, /* 0x00 0x00 0x00 white */
@@ -71,10 +75,12 @@ static int makeLabelOfSize(const char *label, unsigned char *bitmapData,
 static int refitToWidth(unsigned char *bitmapData,
         uint16_t width, uint16_t height, uint16_t newwidth);
 
+#endif
 
 
 int BLGenerateLabelData(BLContextPtr context, const char *label, int scale, CFDataRef *data)
 {
+#if 0 // joevt
     uint16_t width = 340 * scale;
     uint16_t height = 12 * scale;
     uint16_t newwidth;
@@ -82,11 +88,13 @@ int BLGenerateLabelData(BLContextPtr context, const char *label, int scale, CFDa
     int i;
     CFDataRef bits = NULL;
     unsigned char *bitmapData;
+#endif
     
     contextprintf(context, kBLLogLevelError,
                   "CoreGraphics is not available for rendering\n");
     return 1;
 	
+#if 0 // joevt
     bitmapData = (unsigned char *)malloc(width*height+5);
     if (!bitmapData) {
         contextprintf(context, kBLLogLevelError,
@@ -143,6 +151,7 @@ int BLGenerateLabelData(BLContextPtr context, const char *label, int scale, CFDa
     *data = (void *)bits;
     
     return 0;
+#endif
 }
 
 
@@ -150,7 +159,7 @@ int BLGenerateOFLabel(BLContextPtr context,
                     const char label[],
 CFDataRef* data) {
     
-    
+#if 0 // joevt
     uint16_t width = 340;
     uint16_t height = 12;
     uint16_t newwidth;
@@ -158,11 +167,13 @@ CFDataRef* data) {
     int i;
     CFDataRef bits = NULL;
     unsigned char *bitmapData;
+#endif
     
     contextprintf(context, kBLLogLevelError,
     "CoreGraphics is not available for rendering\n");
     return 1;
 	
+#if 0 // joevt
     bitmapData = (unsigned char *)malloc(width*height+5);
     if(!bitmapData) {
         contextprintf(context, kBLLogLevelError,
@@ -220,6 +231,7 @@ CFDataRef* data) {
     *data = (void *)bits;
     
     return 0;
+#endif
 }
 
 #undef USE_COREGRAPHICS
@@ -377,6 +389,7 @@ WEAK_LINK_FORCE_IMPORT(CTFontCreateWithName);
 }
 
 #else // !USE_COREGRAPHICS
+#if 0 // joevt
 static int makeLabelOfSize(const char *label, unsigned char *bitmapData,
 						   uint16_t width, uint16_t height, int scale, uint16_t *newwidth) {
 
@@ -384,6 +397,7 @@ static int makeLabelOfSize(const char *label, unsigned char *bitmapData,
 	*newwidth = 10;
 	return 0;
 }
+#endif
 #endif // !USE_COREGRAPHICS
 
 /*
@@ -392,6 +406,7 @@ static int makeLabelOfSize(const char *label, unsigned char *bitmapData,
  *  111111111111111111
  */
 
+#if 0 // joevt
 static int refitToWidth(unsigned char *bitmapData,
         uint16_t width, uint16_t height, uint16_t newwidth)
 {
@@ -402,3 +417,4 @@ static int refitToWidth(unsigned char *bitmapData,
 
   return 0;
 }
+#endif

@@ -28,6 +28,9 @@
  *  Copyright 2006-2007 Apple Inc. All Rights Reserved.
  *
  */
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #include <IOKit/IOKitLib.h>
 #include <IOKit/IOCFUnserialize.h>
@@ -156,7 +159,7 @@ static int findMatch(BLContextPtr context, CFStringRef legacyType,
 		return 2;
 	}
 		
-	numfs = getfsstat(buf, bufsize, MNT_NOWAIT);
+	numfs = (int)getfsstat(buf, (int)bufsize, MNT_NOWAIT);
 	if(numfs < 0) {
 		contextprintf(context, kBLLogLevelError, "Could not get list of filesystems\n");		
 		return 1;

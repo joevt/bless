@@ -30,12 +30,17 @@
  *  $Id: BLSetOFLabelForDevice.c,v 1.18 2006/02/20 22:49:55 ssen Exp $
  *
  */
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #include <sys/types.h>
 
 #include <CoreFoundation/CoreFoundation.h>
+#if 0  // joevt
 #include <MediaKit/MKMedia.h>
 #include <MediaKit/MKHFSUtilities.h>
+#endif
 
 #include "bless.h"
 #include "bless_private.h"
@@ -143,6 +148,7 @@ int BLSetOFLabelForDevice(BLContextPtr context,
 
 static int GetBlessedFolder(BLContextPtr context, const char *device, uint32_t *blessedFolderID)
 {
+#if 0 // joevt
 	int32_t             i32;
 	MKMediaRef          media;
 	HFSTypes            hfsType;
@@ -171,4 +177,8 @@ static int GetBlessedFolder(BLContextPtr context, const char *device, uint32_t *
 	
 	*blessedFolderID = CFSwapInt32BigToHost(*(uint32_t *)&vh.finderInfo[0]);
 	return 0;
+#else
+	contextprintf(context, kBLLogLevelError, "Not going to do GetBlessedFolder for device %s\n", device);
+	return 1;
+#endif
 }

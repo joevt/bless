@@ -20,13 +20,20 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #include <dlfcn.h>
 #include <sys/stat.h>
 #include <CoreFoundation/CoreFoundation.h>
 #include <IOKit/IOKitLib.h>
 #include <IOKit/storage/IOMedia.h>
+#if 0  // joevt
 #include <APFS/APFS.h>
+#else
+#include "APFS.h"
+#endif
 
 #include "bless.h"
 #include "bless_private.h"
@@ -172,7 +179,7 @@ int setefidevice(BLContextPtr context, const char * bsdname, int bootNext,
 							dlclose(frameworkHandle);
 							return 2;
 						}
-						if (role == APFS_VOL_ROLE_PREBOOT || role == APFS_VOL_ROLE_RECOVERY) {
+						if (role == APFS_VOL_ROLE_PREBOOT || role == APFS_VOL_ROLE_RECOVERY || role == APFS_VOL_ROLE_SYSTEM) { // joevt
 							substitute = false;
 						}
 					}
@@ -424,7 +431,7 @@ int setefifilepath(BLContextPtr context, const char *path, int bootNext,
                         dlclose(frameworkHandle);
                         return 2;
                     }
-					if (role == APFS_VOL_ROLE_PREBOOT || role == APFS_VOL_ROLE_RECOVERY) {
+					if (role == APFS_VOL_ROLE_PREBOOT || role == APFS_VOL_ROLE_RECOVERY || role == APFS_VOL_ROLE_SYSTEM) { // joevt
                         substitute = false;
                     }
                 }

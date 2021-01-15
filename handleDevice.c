@@ -31,6 +31,9 @@
  *
  *
  */
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -41,7 +44,11 @@
 #include <sys/paths.h>
 #include <string.h>
 
+#if 0 // joevt
 #include <APFS/APFS.h>
+#else
+#include "APFS.h"
+#endif
 
 #include "enums.h"
 #include "structs.h"

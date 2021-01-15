@@ -30,6 +30,9 @@
  *  $Id: BLSetOpenFirmwareBootDevice.c,v 1.18 2006/02/20 22:49:57 ssen Exp $
  *
  */
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -86,7 +89,7 @@ int BLSetOpenFirmwareBootDevice(BLContextPtr context, const char * mntfrm) {
         if(NULL != strsep(&restargs, "\t")) { // nvram must separate the name from the value with a tab
             restargs[strlen(restargs)-1] = '\0'; // remove \n
             
-            err = BLPreserveBootArgs(context, restargs, bootargs+strlen(bootargs), sizeof bootargs - strlen(bootargs));
+            err = BLPreserveBootArgs(context, restargs, bootargs+strlen(bootargs), (int)(sizeof bootargs - strlen(bootargs)));
         }
     }
     

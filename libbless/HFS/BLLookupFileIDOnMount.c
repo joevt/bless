@@ -28,6 +28,9 @@
  *  Copyright (c) 2001-2007 Apple Inc. All Rights Reserved.
  *
  */
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -38,7 +41,11 @@
 #include <sys/param.h>
 #include <sys/mount.h>
 #include <sys/attr.h>
+#if 0  // joevt
 #include <System/sys/fsgetpath.h>
+#else
+#include "fsgetpath.h"
+#endif
 
 #include "bless.h"
 #include "bless_private.h"
@@ -116,7 +123,7 @@ int BLLookupFileIDOnMount64(BLContextPtr context, const char *mountpoint, uint64
     }
     
 	if (__builtin_available(macOS 10.13, *)) {
-		err = fsgetpath(out, bufsize, &sfs.f_fsid, fileID);
+		err = (int)fsgetpath(out, bufsize, &sfs.f_fsid, fileID);
 		if (err < 0) return errno;
 	} else {
 		err = ENOTSUP;

@@ -20,6 +20,9 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
+/*
+ *  Modifications by joevt on Jan 15 2021.
+*/
 
 
 #include <CoreFoundation/CoreFoundation.h>
@@ -433,7 +436,7 @@ static void findMSDOSRegion (BLContextPtr inContext, const char* inBSDName, bool
 	// Read buffer where the the first 64 Entries are:
 	int ret;
 	bzero (buf2048, 2048);
-	ret = pread (fd, buf2048, 1*2048, firstSectorOfBootCatalog*2048);
+	ret = (int)pread (fd, buf2048, 1*2048, firstSectorOfBootCatalog*2048);
 	contextprintf (inContext, kBLLogLevelVerbose, "\n\npread 2048-buff of Entries; ret=%d\n", ret);
     
 	uint8_t entryBuf [32];
