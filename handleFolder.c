@@ -834,7 +834,7 @@ int modeFolder(BLContextPtr context, struct clarg actargs[klast]) {
 									   actargs[koptions].present ? actargs[koptions].argument : NULL);
 
             } else {
-				if (!shouldBless && !isAPFS && actargs[kfile].present) useFullPath = true;
+				if (!shouldBless /* && !isAPFS */ && actargs[kfile].present) useFullPath = true; // joevt
                 ret = setefifilepath(context, (useFullPath ? actargs[kfile].argument : actargs[kmount].argument),
                                  actargs[knextonly].present,
                                  actargs[koptions].present ? actargs[koptions].argument : NULL,
