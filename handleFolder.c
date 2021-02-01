@@ -341,6 +341,7 @@ int modeFolder(BLContextPtr context, struct clarg actargs[klast]) {
         }
     }
 	
+#if 0 // joevt
     if (isAPFS && !isAPFSDataRolePreSSVToSSVThusDontWriteToVol && actargs[ksetboot].present) {
         char        pathBuf[MAXPATHLEN];
         CFDataRef   apfsDriverData;
@@ -376,6 +377,7 @@ int modeFolder(BLContextPtr context, struct clarg actargs[klast]) {
             CFRelease(apfsDriverData);
         }
     }
+#endif
 	
 	
 	if (!isAPFSDataRolePreSSVToSSVThusDontWriteToVol && (actargs[klabel].present || actargs[klabelfile].present)) {
