@@ -21,7 +21,7 @@
  * @APPLE_LICENSE_HEADER_END@
  */
 /*
- *  Modifications by joevt on Jan 15 2021.
+ *  Modifications by joevt on Jan 15 2021 - Jan 30 2021
 */
 
 #include <dlfcn.h>
@@ -179,7 +179,7 @@ int setefidevice(BLContextPtr context, const char * bsdname, int bootNext,
 							dlclose(frameworkHandle);
 							return 2;
 						}
-						if (role == APFS_VOL_ROLE_PREBOOT || role == APFS_VOL_ROLE_RECOVERY || role == APFS_VOL_ROLE_SYSTEM) { // joevt
+						if (role == APFS_VOL_ROLE_PREBOOT || role == APFS_VOL_ROLE_RECOVERY || 1) { // joevt
 							substitute = false;
 						}
 					}
@@ -431,7 +431,7 @@ int setefifilepath(BLContextPtr context, const char *path, int bootNext,
                         dlclose(frameworkHandle);
                         return 2;
                     }
-					if (role == APFS_VOL_ROLE_PREBOOT || role == APFS_VOL_ROLE_RECOVERY || role == APFS_VOL_ROLE_SYSTEM) { // joevt
+					if (role == APFS_VOL_ROLE_PREBOOT || role == APFS_VOL_ROLE_RECOVERY || 1) { // joevt
                         substitute = false;
                     }
                 }

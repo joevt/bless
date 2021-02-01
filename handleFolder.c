@@ -31,7 +31,7 @@
  *
  */
 /*
- *  Modifications by joevt on Jan 15 2021.
+ *  Modifications by joevt on Jan 15 2021 - Jan 30 2021
 */
 
 #include <CoreFoundation/CoreFoundation.h>
@@ -651,7 +651,7 @@ int modeFolder(BLContextPtr context, struct clarg actargs[klast]) {
             char     *bootEFISource;
             
             if (shouldBless) {
-                if (role == APFS_VOL_ROLE_PREBOOT || role == APFS_VOL_ROLE_RECOVERY || role == APFS_VOL_ROLE_SYSTEM) { // joevt
+                if (role == APFS_VOL_ROLE_PREBOOT || role == APFS_VOL_ROLE_RECOVERY || 1) { // joevt
 					if (actargs[kfile].present) useFullPath = true;
 					
                     ret = BLGetAPFSBlessData(context, actargs[kmount].argument, oldWords);
