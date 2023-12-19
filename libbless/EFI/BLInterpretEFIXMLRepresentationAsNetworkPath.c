@@ -233,9 +233,9 @@ int BLInterpretEFIXMLRepresentationAsNetworkPath(BLContextPtr context,
             
             if(remoteIP && CFGetTypeID(remoteIP) == CFStringGetTypeID()) {
                 CFStringGetCString(remoteIP, host, NS_MAXDNAME,kCFStringEncodingUTF8);
-                contextprintf(context, kBLLogLevelVerbose, "Found server: %s\n", host);
                 foundserver = 1;
                 foundserverindex = i;
+                contextprintf(context, kBLLogLevelVerbose, "Found server at index %ld: %s\n", (long)foundserverindex, host);
                 break;
             } else {
                 contextprintf(context, kBLLogLevelVerbose, "Malformed MessagingIPv4 entry. Ignoring...\n");
