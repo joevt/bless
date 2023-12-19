@@ -3,3 +3,4 @@ DerivedData
 project.xcworkspace
 xcshareddata
 xcuserdata
+build/
